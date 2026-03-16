@@ -50,18 +50,76 @@
 //   )
 // }
 
-import { useState } from "react"
-import { Settings, LogOut } from 'lucide-react';
+// import { useState } from "react"
+// import { Settings, LogOut } from 'lucide-react';
+// import logo from '../assets/KC_logo-icon.png';
+
+// const navItems = [
+//   { label: "Dashboard", icon: "▦" },
+//   { label: "Apply Leave", icon: "👤" },
+//   { label: "My Leave", icon: "👤" },
+//   { label: "Setting", icon: <Settings /> },
+// ]
+
+// export default function Sidebar({ isDark }) {
+//   const [active, setActive] = useState("Dashboard")
+
+//   return (
+//     <aside className="w-56 h-screen bg-white dark:bg-slate-800 flex flex-col px-4 py-6 shadow-md transition-colors duration-300 flex-shrink-0">
+
+//       {/* Logo */}
+//       <div className="flex items-center gap-3 mb-8">
+//         <div className="bg-blue-700 text-white text-xs font-bold w-9 h-9 flex items-center justify-center rounded-lg flex-shrink-0">
+//          <img 
+//          src={logo} 
+//          alt="Kalyani Cast Tech Logo" 
+//          className="w-full h-full object-contain"
+//          />
+//         </div>
+//         <span className="text-sm font-bold text-slate-800 dark:text-white leading-tight transition-colors duration-300">
+//           Kalyani Cast Tech Ltd
+//         </span>
+//       </div>
+
+//       {/* Nav Links */}
+//       <nav className="flex flex-col gap-1 flex-1">
+//         {navItems.map((item) => (
+//           <button
+//             key={item.label}
+//             onClick={() => setActive(item.label)}
+//             className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200
+//               ${active === item.label
+//                 ? "bg-blue-700 text-white shadow-md shadow-blue-200"
+//                 : "text-slate-500 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-white"
+//               }`}
+//           >
+//             <span>{item.icon}</span>
+//             <span>{item.label}</span>
+//           </button>
+//         ))}
+//       </nav>
+
+//       {/* Logout */}
+//       <button className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold py-2.5 rounded-lg transition-all duration-200">
+//         <span><LogOut /></span> Logout
+//       </button>
+
+//     </aside>
+//   )
+// }
+
+import { useNavigate, useLocation } from "react-router-dom"
 
 const navItems = [
-  { label: "Dashboard", icon: "▦" },
-  { label: "Apply Leave", icon: "👤" },
-  { label: "My Leave", icon: "👤" },
-  { label: "Setting", icon: <Settings /> },
+  { label: "Dashboard", icon: "▦", path: "/dashboard" },
+  { label: "Apply Leave", icon: "👤", path: "/apply-leave" },
+  { label: "My Leave", icon: "👤", path: "/my-leave" },
+  { label: "Setting", icon: "⚙️", path: "/settings" },
 ]
 
-export default function Sidebar({ isDark }) {
-  const [active, setActive] = useState("Dashboard")
+export default function Sidebar() {
+  const navigate = useNavigate()
+  const location = useLocation()
 
   return (
     <aside className="w-56 h-screen bg-white dark:bg-slate-800 flex flex-col px-4 py-6 shadow-md transition-colors duration-300 flex-shrink-0">
@@ -81,9 +139,9 @@ export default function Sidebar({ isDark }) {
         {navItems.map((item) => (
           <button
             key={item.label}
-            onClick={() => setActive(item.label)}
+            onClick={() => navigate(item.path)}
             className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200
-              ${active === item.label
+              ${location.pathname === item.path
                 ? "bg-blue-700 text-white shadow-md shadow-blue-200"
                 : "text-slate-500 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-white"
               }`}
@@ -96,7 +154,7 @@ export default function Sidebar({ isDark }) {
 
       {/* Logout */}
       <button className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold py-2.5 rounded-lg transition-all duration-200">
-        <span><LogOut /></span> Logout
+        <span>↩</span> Logout
       </button>
 
     </aside>
