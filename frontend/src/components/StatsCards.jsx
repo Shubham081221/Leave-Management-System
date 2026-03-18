@@ -64,7 +64,7 @@
 //Responsive
 
 const stats = [
-  { count: 5, label: "Annual Leave Left", sub: "5 used of 10", color: "text-blue-500",    border: "border-t-blue-500",    icon: "👤" },
+  { count: 5, label: "Annual Leave Left", sub: "5 used of 10", color: "text-red-500",    border: "border-t-blue-500",    icon: "👤" },
   { count: 2, label: "Sick Leave Left",   sub: "3 used of 5",  color: "text-amber-500",   border: "border-t-amber-500",   icon: "🤒" },
   { count: 0, label: "Approved",          sub: "Fully Confirmed",    color: "text-emerald-500", border: "border-t-emerald-500", icon: "✅" },
   { count: 0, label: "In Progress",       sub: "Awaiting approval",  color: "text-red-500",     border: "border-t-red-500",     icon: "⏳" },
